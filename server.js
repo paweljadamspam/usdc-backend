@@ -7,7 +7,7 @@ app.use((req,res,next)=>{
   next();
 });
 
-const USDC_MINT="Es9vMFrzaCERX3xD9UrW8khGbqG9mXhU6K7aF6r6Fh4t";
+const USDC_MINT="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
 
 app.get("/usdc/:address", async (req,res)=>{
   try{
