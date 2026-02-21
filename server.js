@@ -21,20 +21,19 @@ app.get("/usdc/:address", async (req,res)=>{
         method:"getTokenAccountsByOwner",
         params:[
           address,
-          {mint:USDC_MINT},
+          {mint:"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"},
           {encoding:"jsonParsed"}
         ]
       })
     });
     const data = await response.json();
-    // Sumujemy wszystkie konta tokena USDC
     let balance=0;
     if(data.result.value){
       for(const acct of data.result.value){
         balance += parseInt(acct.account.data.parsed.info.tokenAmount.amount);
       }
     }
-    res.json({balance}); // balance w najmniejszych jednostkach (6 decimals)
+    res.json({balance});
   }catch(e){
     res.status(500).json({error:"RPC failed"});
   }
